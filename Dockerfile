@@ -1,9 +1,11 @@
-FROM debian:latest
+FROM python:3.7
 
-RUN apt-get update && apt-get install -qq -y \
-    shellcheck \
-  && rm -rf /var/lib/apt/lists/*
+ENV DOCKER=true
 
-WORKDIR /usr/src/app/
+COPY pyproject.toml .
 
-COPY . /usr/src/app/
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir poetry && \
+    poetry install
+
+EXPOSE 8000
