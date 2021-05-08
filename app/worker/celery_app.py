@@ -3,6 +3,8 @@ from celery import Celery
 
 celery_app = None
 
+# setting Redis as backend and Rabbitmq as broker
+
 celery_app = Celery(
     "worker",
     backend="redis://:password123@redis:6379/0",

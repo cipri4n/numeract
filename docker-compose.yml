@@ -35,7 +35,7 @@ services:
       - amqp.env
     ports:
       - "5555:5555"
-    depends_on:
+    depends_on:           # express dependency between services
       - rabbitmq
       - redis
 
